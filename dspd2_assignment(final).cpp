@@ -260,9 +260,8 @@ void printPlaylist(Song *head){
 
 /*q4 Write a function to DeleteSong() to delete 
  the particular song details from the linked list
- as per the song_name and also as per the name of
- the artist provided by the user and deletes all 
- the entries with that artist.*/
+ as per the song_name and as per the name of
+ the artist provided by the user */
 
 void DeleteSong(struct Song** head) {
     Song* current = *head;
@@ -424,8 +423,9 @@ void DisplayPlaylist(Song* playlist)
 
 
 /*q7 Given a play-list and the serial number of the song, display details of the song. 
-At this point, given an integer offset �k� and direction �up� or �down�, display the details of kth
+At this point, given an integer offset  k  and direction  up  or  down , display the details of kth
 previous or kth next song, from the current song, respectively, in the play-list.*/
+
 void DisplayplaylistDetails(Song* playlist,int index)
 {
 	int tempSerial=1;
@@ -484,7 +484,7 @@ void DisplayplaylistDetails(Song* playlist,int index)
 }
 
 /*q8 Given a play-list and the serial number of the song, display details of the song. Provide an 
-option to the user to select one or many attributes of this �current� song and create a playlist for these attribute values from the original database*/
+option to the user to select one or many attributes of this  current  song and create a playlist for these attribute values from the original database*/
 Song* createPlayListFromSong(Song *head, Song *plptr, int sno){
     Song *ptr = plptr, *nplptr = NULL; //new play list pointer
     int k = 1;
@@ -579,40 +579,7 @@ void playInLoop(Song* playlist, int k) {
 }
 
 
-//q11 
-/*Shuffle to something else. Take a set of attributes and their values as inputs. Randomly
-select any song from the original database matching all the attribute values provided.
 
-Mark it using FLAG so that it doesn’t get a chance again till all other songs in the playlist
-are played randomly.*/
-void shuffleToSomethingElse(Song *head, char **attributes, char **values, int numOfAtt, int dataBaseCount){
-    int done = 0, i;
-    int flag[dataBaseCount];
-    for(i=0; i<dataBaseCount; i++) flag[i] = 0;
-
-    while(!done){
-        Song *currSong = head;
-        int songNum = abs(rand()) % dataBaseCount, k=0;
-        while(currSong && k<songNum){
-            currSong = currSong->next;
-            k++;
-        }
-        if(!flag[k]){
-            flag[k] = 1;
-            int matches = countMatches(currSong, numOfAtt, attributes, values);
-            if(matches == numOfAtt){
-                playSong(currSong);
-            }
-        }
-        int c = 0;
-        for(i=0; i<dataBaseCount; i++){
-            if(flag[i] == 1){
-                c++;
-            }
-        }
-        if(c == dataBaseCount) done = 1;
-    }
-}
 
 int main()
 {
@@ -771,13 +738,3 @@ int main()
 
     return 0;
 }
-
-
-
-
-
-
-
-
-
-

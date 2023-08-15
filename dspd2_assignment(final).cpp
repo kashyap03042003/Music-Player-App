@@ -602,8 +602,7 @@ int main()
         printf("9. Filter all songs in the playlist according to given attribute\n");
         printf("10. play the playlist in a loop\n");
         printf("11. Create new playlist based on attribute(s) and value of selected song\n");
-        printf("12. Shuffle to something else\n");
-        printf("13. Exit\n");
+        printf("12. Exit\n");
 
 
         printf("\nEnter your choice: ");
@@ -706,27 +705,8 @@ int main()
                 scanf("%d", &songNum);
                 new_playlist[++playListCount] = createPlayListFromSong(head, new_playlist[idx], songNum);
 				break;
-            case 12: // actual q11
-                printf("\nEnter the number of attributes to use for the playlist: ");
-                scanf("%d", &num_attributes);
-                for(int i=0; i<num_attributes; i++)
-				{
-                    attributes[i] = (char*)malloc(50*sizeof(char));
-                    values[i] = (char*)malloc(50*sizeof(char));
-                    printf("\nEnter attribute %d: ", i+1);
-                    scanf("%s", attributes[i]);
-                    printf("Enter value %d: ", i+1);
-                    scanf("%s", values[i]);
-                }
-
-                shuffleToSomethingElse(head, attributes, values, num_attributes, dataBaseCount);
-
-                for(int i=0; i<num_attributes; i++)
-				{
-                    free(attributes[i]);
-                    free(values[i]);
-                }
-            case 13:
+            
+            case 12:
                 printf("\nExiting...\n");
                 exit(0);
                 break;
